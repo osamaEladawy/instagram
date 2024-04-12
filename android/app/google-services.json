@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "465195890091",
+    "project_id": "inista-c71ef",
+    "storage_bucket": "inista-c71ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465195890091:android:09b5f0bf7ecc63716aceee",
+        "android_client_info": {
+          "package_name": "com.classcar200.inistagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465195890091-io3c70de23rrchtvibngv45alqi9n1jg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKovNQMd5XnYIeAR058tvKroWWSCBu3vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465195890091-io3c70de23rrchtvibngv45alqi9n1jg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
