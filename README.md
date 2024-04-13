@@ -11,11 +11,13 @@
 - mvvm structure
 - responsive
 
+## Usage
+
 This app allows users to follow each other, upload posts, share and interact with each other
 And add comments to it as well. It also allows users to live chat, upload statuses, and send
 notifications to users in the event of interaction with each user's posts.
 
-### App template task screens
+### ScreenShots
 
 ![App UI](/login.png)
 ![App UI](/sign_up.png)
