@@ -34,6 +34,7 @@ notifications to users in the event of interaction with each user's posts.
 ![App UI](/my_chat.png)
 ![App UI](/send_message.png)
 ![App UI](/options_in_chat.png)
+![App UI](/emoji.png)
 
 
 
