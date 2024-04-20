@@ -4,7 +4,6 @@ import 'package:inistagram/app/riles/presentation/pages/riles_page.dart';
 import 'package:inistagram/controller/user_providers.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller/auth_service.dart';
 import '../../views/post/add_post.dart';
 import '../../views/screens/home.dart';
 import '../../app/user/presentation/pages/profile_page.dart';

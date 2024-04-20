@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:inistagram/app/user/data/remote/models/user_model.dart';
 import 'package:inistagram/core/const/page_const.dart';
 import 'package:inistagram/core/globel/functions/navigationpage.dart';
 import '../../core/functions/firestore_methods.dart';
@@ -39,7 +38,7 @@ class PostViewModel {
   getPosts()async{
     await FirebaseFirestore.instance.collection("posts").get().then((value){
       value.docs.forEach((element) {
-        posts = element.data()!;
+        posts = element.data();
       });
     });
     print("posts ===================================================");

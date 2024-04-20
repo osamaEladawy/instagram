@@ -107,8 +107,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   if(FirebaseAuth.instance.currentUser!.uid !=
                     _model.userData['uid']&& _model.isFollow == true &&_model.userData['isPrivate'] == false)
-                  TabsForPosts(
-                    uid: widget.uid, postId: _model.post["postId"], 
+                  Expanded(
+                    child: TabsForPosts(
+                      uid: widget.uid, postId: _model.post["postId"], 
+                    ),
                   ),
 
                 ],

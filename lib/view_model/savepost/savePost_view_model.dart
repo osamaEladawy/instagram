@@ -71,7 +71,7 @@ class SavePostViewModel {
         .get()
         .then((value) {
       for (var element in value.docs) {
-        dataComments = element.data()!;
+        dataComments = element.data();
       }
       print("Comments==================================loaded");
       print(dataComments);

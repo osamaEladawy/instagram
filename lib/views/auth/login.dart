@@ -111,17 +111,17 @@ class _LoginPageState extends State<LoginPage> {
                       viewModel.login(context);
                     },
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  HaveAccountOrNot(
-                    onTap: widget.onTap,
-                    title: "Don't have account ?",
-                  ),
                 ],
               ),
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        child: HaveAccountOrNot(
+          onTap: widget.onTap,
+          title: "Don't have account ?",
         ),
       ),
     );

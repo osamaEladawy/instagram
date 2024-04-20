@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:inistagram/controller/user_providers.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/functions/firestore_methods.dart';
 import 'package:inistagram/core/theme/style.dart';
 import 'package:inistagram/data/model/comment_save_post_model.dart';
 import 'package:inistagram/data/model/save_posts.dart';

@@ -11,7 +11,6 @@ import 'package:inistagram/routes/on_generate_routes.dart';
 import 'package:inistagram/storage/storage_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:video_player_media_kit/video_player_media_kit.dart';
 
 import 'app/calls/presentation/manager/agora/agora_cubit.dart';
 import 'app/calls/presentation/manager/my_call/my_call_history_cubit.dart';
@@ -39,14 +38,6 @@ late SharedPreferences preferences;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   preferences = await SharedPreferences.getInstance();
-  //  VideoPlayerMediaKit.ensureInitialized(
-  //   android: true,          // default: false    -    dependency: media_kit_libs_android_video
-  //   iOS: true,              // default: false    -    dependency: media_kit_libs_ios_video
-  //   macOS: true,            // default: false    -    dependency: media_kit_libs_macos_video
-  //   windows: true,          // default: false    -    dependency: media_kit_libs_windows_video
-  //   linux: true,            // default: false    -    dependency: media_kit_libs_linux
-  //   web : true,
-  // );
   await Firebase.initializeApp(
     options: const FirebaseOptions(
         apiKey: "AIzaSyBKovNQMd5XnYIeAR058tvKroWWSCBu3vw",
@@ -57,9 +48,7 @@ Future<void> main() async {
   );
   await di.init();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  
   //110429901
-
   return runApp(
     MultiProvider(
       providers: [
@@ -118,6 +107,8 @@ class MyApp extends StatelessWidget {
             centerTitle: true,
           ),
           scaffoldBackgroundColor: Colors.black),
+          themeMode: ThemeMode.system,
+         // home: const VideoPlayerScreen(),
       initialRoute: "/",
       onGenerateRoute: OnGenerateRoute.route,
     );

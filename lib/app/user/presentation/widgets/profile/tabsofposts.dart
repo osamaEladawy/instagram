@@ -36,7 +36,7 @@ class _TabsForPostsState extends State<TabsForPosts>
         TabBar(controller: controller, tabs: const [
           Tab(
             icon: Icon(
-              Icons.photo_sharp,
+              Icons.grid_on_sharp,
             ),
           ),
           Tab(
@@ -50,8 +50,8 @@ class _TabsForPostsState extends State<TabsForPosts>
         ]),
         SizedBox(
           width: MediaQuery.of(context).size.width,
-          height: 370,
-          //height: MediaQuery.of(context).size.height / 1.8,
+          //height: 370,
+          height: MediaQuery.of(context).size.height - 365,
           child: TabBarView(
             controller: controller, children: [
             PostsForUser(uid: widget.uid),

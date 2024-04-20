@@ -17,7 +17,6 @@ class ImageForUsers extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(75),
             child:child,
-            // profileWidget(imageUrl: currentUser.imageUrl, image: image),
           ),
         ),
         Positioned(

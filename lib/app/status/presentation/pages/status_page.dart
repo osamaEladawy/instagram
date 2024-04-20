@@ -16,7 +16,6 @@ import '../../../../core/const/page_const.dart';
 import '../../../../core/globel/widgets/sigle_chate/show_image_and_video.dart';
 import '../../../../core/theme/style.dart';
 import '../../../../storage/storage_provider.dart';
-import '../../../../views/screens/home.dart';
 import '../../../user/domain/entities/user_entity.dart';
 import '../../domain/entities/status_entity.dart';
 import '../../domain/entities/status_image_entity.dart';

@@ -70,10 +70,11 @@ class _SignUpState extends State<SignUp> {
                         height: 60,
                       ),
                       ImageForUsers(
-                        onTap: () async{
+                        onTap: () async {
                           await service.getImage(context);
                         },
-                        child: profileWidget(imageUrl: service.url,image:service.file),
+                        child: profileWidget(
+                            imageUrl: service.url, image: service.file),
                       ),
                       const SizedBox(
                         height: 20,
@@ -155,19 +156,19 @@ class _SignUpState extends State<SignUp> {
                           viewModel.signUp(context);
                         },
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      HaveAccountOrNot(
-                        onTap: widget.onTap,
-                        title: "You have account ?",
-                      ),
                     ],
                   ),
                 ),
               ),
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        margin: const EdgeInsets.only(bottom: 7,top: 7),
+        child: HaveAccountOrNot(
+          onTap: widget.onTap,
+          title: "You have account ?",
         ),
       ),
     );

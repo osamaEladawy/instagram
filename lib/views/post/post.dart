@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:inistagram/app/user/data/remote/models/user_model.dart';
 import 'package:inistagram/controller/user_providers.dart';
 import 'package:inistagram/core/class/handel_request.dart';
 import 'package:inistagram/core/const/page_const.dart';
