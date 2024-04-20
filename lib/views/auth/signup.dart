@@ -37,6 +37,15 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     var service = Provider.of<HandleImage>(context);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Instagram",
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic),
+        ),
+      ),
       body: PopScope(
         canPop: false,
         onPopInvoked: (b) {
@@ -59,16 +68,6 @@ class _SignUpState extends State<SignUp> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Instagram",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic),
-                      ),
-                      const SizedBox(
-                        height: 60,
-                      ),
                       ImageForUsers(
                         onTap: () async {
                           await service.getImage(context);
