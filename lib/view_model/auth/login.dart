@@ -36,26 +36,27 @@ class LoginViewModel {
       isValid = true;
       var service = Provider.of<AuthService>(context, listen: false);
       try {
-        await service.login(_email.text, _password.text);
-            await _store.collection("users").doc(_auth.currentUser!.uid).get().then((value)async{
-
+        await service.login(_email.text.trim(), _password.text.trim());
+        await _store
+            .collection("users")
+            .doc(_auth.currentUser!.uid)
+            .get()
+            .then((value) async {
           if (value.data() != null) {
-          data = value.data()!;
-          preferences.setString('uid', data['uid'].toString());
-          String? userId = preferences.getString("uid");
-          FirebaseMessaging.instance.subscribeToTopic("users");
-          FirebaseMessaging.instance.subscribeToTopic("users$userId");
-          print("============================================login");
-          print("$userId   login");
-          print("============================================login");
-          var updateUser =
-              FirebaseFirestore.instance.collection("users").doc(data["uid"]);
-          await updateUser.update({"isOnline": true});
-          navigationNameReplacePage(context, PageConst.initialPage);
-        }
-            });
-
-       
+            data = value.data()!;
+            preferences.setString('uid', data['uid'].toString());
+            String? userId = preferences.getString("uid");
+            FirebaseMessaging.instance.subscribeToTopic("users");
+            FirebaseMessaging.instance.subscribeToTopic("users$userId");
+            print("============================================login");
+            print("$userId   login");
+            print("============================================login");
+            var updateUser =
+                FirebaseFirestore.instance.collection("users").doc(data["uid"]);
+            await updateUser.update({"isOnline": true});
+            navigationNamePageAndRemoveAll(context, PageConst.initialPage);
+          }
+        });
       } catch (e) {
         print("==================");
         print(e.toString());

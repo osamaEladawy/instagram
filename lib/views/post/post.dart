@@ -38,7 +38,9 @@ class _PostPageState extends State<PostPage> {
 
   getMyPosts() async {
     await model.getPosts();
-    setState(() {});
+     if (mounted) {
+      setState(() {});
+    }
   }
 
   getAllCommentsIndex() async {
@@ -80,7 +82,7 @@ class _PostPageState extends State<PostPage> {
             model.isFollow && model.userData['isPrivate'] == false ||
             (MediaQuery.of(context).size.width > 600)
         ? Column(
-          mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -231,60 +233,41 @@ class _PostPageState extends State<PostPage> {
                       ),
                     ],
                   ),
+                  Spacer(),
                   if (user != null)
-                    Row(
-                      children: [
-                        user.uid == model.savePostData['currentUserId'] &&
-                                widget.postSnap.postId ==
-                                    model.savePostData['postId'] &&
-                                widget.postSnap.isSave == true
-                            ? IconButton(
-                                onPressed: () async {
-                                  await model.deleteSavePost(
-                                      widget.postSnap.postId, context);
-                                },
-                                icon: Icon(user.uid ==
-                                            model.savePostData[
-                                                'currentUserId'] &&
-                                        widget.postSnap.isSave == true &&
-                                        widget.postSnap.postId ==
-                                            model.savePostData['postId']
-                                    ? Icons.bookmark
-                                    : Icons.bookmark_outline),
-                              )
-                            : IconButton(
-                                onPressed: () async {
-                                  await model.saveMypost(
-                                      useruidForPost: widget.postSnap.uid!,
-                                      currentUserId: user.uid!,
-                                      usernameForPost:
-                                          widget.postSnap.username!,
-                                      descriptionForPost:
-                                          widget.postSnap.description!,
-                                      postId: widget.postSnap.postId!,
-                                      postUrl: widget.postSnap.postUrl!,
-                                      profileImageForuserpost:
-                                          widget.postSnap.profileImage!,
-                                      likes: widget.postSnap.likes!,
-                                      datePublishedForPost:
-                                          widget.postSnap.datePublished,
-                                      currentUserIdFromDatabase:
-                                          model.savePostData['currentUserId'],
-                                      postIdFromDatabase:
-                                          model.savePostData['postId'],
-                                      context: context);
-                                },
-                                icon: Icon(user.uid ==
-                                            model.savePostData[
-                                                'currentUserId'] &&
-                                        widget.postSnap.isSave == true &&
-                                        widget.postSnap.postId ==
-                                            model.savePostData['postId']
-                                    ? Icons.bookmark
-                                    : Icons.bookmark_outline),
-                              ),
-                      ],
-                    ),
+                    //  user.uid == model.savePostData['currentUserId'] &&
+                    //         widget.postSnap.postId ==
+                    //             model.savePostData['postId'] &&
+                            widget.postSnap.isSave == true
+                        ? IconButton(
+                            onPressed: () async {
+                              await model.deleteSavePost(
+                                  widget.postSnap.postId, context);
+                            },
+                            icon: Icon(Icons.bookmark))
+                        : IconButton(
+                            onPressed: () async {
+                              return await model.saveMypost(
+                                  useruidForPost: widget.postSnap.uid!,
+                                  currentUserId: user.uid!,
+                                  usernameForPost: widget.postSnap.username!,
+                                  descriptionForPost:
+                                      widget.postSnap.description!,
+                                  postId: widget.postSnap.postId!,
+                                  postUrl: widget.postSnap.postUrl!,
+                                  profileImageForuserpost:
+                                      widget.postSnap.profileImage!,
+                                  likes: widget.postSnap.likes!,
+                                  datePublishedForPost:
+                                      widget.postSnap.datePublished,
+                                  currentUserIdFromDatabase:
+                                      model.savePostData['currentUserId'],
+                                  postIdFromDatabase:
+                                      model.savePostData['postId'],
+                                  context: context);
+                            },
+                            icon: Icon(Icons.bookmark_outline),
+                          ),
                 ],
               ),
               Column(

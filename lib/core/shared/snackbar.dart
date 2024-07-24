@@ -3,12 +3,13 @@ import 'package:inistagram/core/theme/style.dart';
 
 showSnackBar(String content, BuildContext context) {
   ScaffoldMessenger.of(context)
-    ..removeCurrentSnackBar()
+    ..hideCurrentSnackBar()
     ..showSnackBar(
       SnackBar(
         content: Container(
           alignment: Alignment.center,
           height: 50,
+          width: 80,
           decoration: BoxDecoration(
             border: Border.all(
               color: Colors.grey,
@@ -20,7 +21,7 @@ showSnackBar(String content, BuildContext context) {
             style: const TextStyle(color: whiteColor),
           ),
         ),
-        backgroundColor: blackColor,
+        backgroundColor: Colors.grey[600],
       ),
     );
 }

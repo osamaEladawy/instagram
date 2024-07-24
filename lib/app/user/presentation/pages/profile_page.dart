@@ -26,22 +26,18 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {});
   }
 
-  getAllPost()async{
+  getAllPost() async {
     await _model.getPosts();
-    setState(() {
-      
-    });
+    setState(() {});
   }
-
 
   @override
   void initState() {
-      BlocProvider.of<GetSingleUserCubit>(context)
+    BlocProvider.of<GetSingleUserCubit>(context)
         .getSingleUser(userId: widget.uid);
     super.initState();
     getDataForUser();
     getAllPost();
-   
   }
 
   @override
@@ -54,25 +50,28 @@ class _ProfilePageState extends State<ProfilePage> {
           )
         : Scaffold(
             appBar: AppBar(
-              leading: IconButton(onPressed: (){
-                Navigator.of(context).pop();
-              },icon:const Icon(Icons.arrow_back_ios),),
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(Icons.arrow_back_ios),
+              ),
               centerTitle: false,
               title: AppBarTitleForProfile(
                 model: _model,
                 userEntity: userEntity,
               ),
               actions: [
-                 if (FirebaseAuth.instance.currentUser!.uid ==
+                if (FirebaseAuth.instance.currentUser!.uid ==
                     _model.userData['uid'])
-                TextButton(
-                    onPressed: () async {
-                     await _model.privateMyProfile(widget.uid);
-                     setState((){});
-                    },
-                    child: _model.value == true
-                        ? const Text("puplic")
-                        : const Text("private")),
+                  TextButton(
+                      onPressed: () async {
+                        await _model.privateMyProfile(widget.uid);
+                        setState(() {});
+                      },
+                      child: _model.value == true
+                          ? const Text("puplic")
+                          : const Text("private")),
                 if (FirebaseAuth.instance.currentUser!.uid ==
                     _model.userData['uid'])
                   IconButton(
@@ -98,21 +97,20 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Text("${_model.userData['bio']}"),
                   ),
                   const Divider(),
-
-                 if (FirebaseAuth.instance.currentUser!.uid ==
-                    _model.userData['uid'])
-                   TabsForPosts(
-                    uid: widget.uid, postId: _model.post['postId'], 
-                  ),
-
-                  if(FirebaseAuth.instance.currentUser!.uid !=
-                    _model.userData['uid']&& _model.isFollow == true &&_model.userData['isPrivate'] == false)
-                  Expanded(
-                    child: TabsForPosts(
-                      uid: widget.uid, postId: _model.post["postId"], 
+                  if (FirebaseAuth.instance.currentUser!.uid ==
+                      _model.userData['uid'])
+                    TabsForPosts(
+                      uid: widget.uid,
+                      postId: _model.post['postId'],
                     ),
-                  ),
-
+                  if (FirebaseAuth.instance.currentUser!.uid !=
+                          _model.userData['uid'] &&
+                      _model.isFollow == true &&
+                      _model.userData['isPrivate'] == false)
+                    TabsForPosts(
+                      uid: widget.uid,
+                      postId: _model.post["postId"],
+                    ),
                 ],
               ),
             ),

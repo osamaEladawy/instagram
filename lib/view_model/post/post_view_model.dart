@@ -32,11 +32,8 @@ class PostViewModel {
   var savePostData = {};
   var posts = {};
 
-
-
-
-  getPosts()async{
-    await FirebaseFirestore.instance.collection("posts").get().then((value){
+  getPosts() async {
+    await FirebaseFirestore.instance.collection("posts").get().then((value) {
       value.docs.forEach((element) {
         posts = element.data();
       });
@@ -45,7 +42,6 @@ class PostViewModel {
     print(posts);
     print("posts ===================================================");
   }
-
 
   getSavePosts(postId) async {
     loading = true;
@@ -173,14 +169,14 @@ class PostViewModel {
       required String postUrl}) async {
     try {
       //isLike = true;
-       FireStoreMethods().likePost(
+      FireStoreMethods().likePost(
           user: user,
           postId: postId,
           likes: likes,
           context: context,
           postUserId: postUserId,
           postUrl: postUrl);
-       // navigationNamePage(context, PageConst.initialPage);
+      // navigationNamePage(context, PageConst.initialPage);
     } catch (e) {}
   }
 
@@ -229,7 +225,6 @@ class PostViewModel {
     )
         .then((value) {
       Future.delayed(const Duration(milliseconds: 1000)).then((value) {
-        navigationNamePage(context, PageConst.initialPage);
         return showSnackBar("post Save now", context);
       });
     });

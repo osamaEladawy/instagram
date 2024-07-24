@@ -107,11 +107,15 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: IconButton(
-              onPressed: () {
-                navigationNamePage(context, PageConst.notifications);
-              },
-              icon: const Icon(Icons.favorite),
+            child: Badge(
+              backgroundColor: Colors.red,
+              label: Text("1"),
+              child: IconButton(
+                onPressed: () {
+                  navigationNamePage(context, PageConst.notifications);
+                },
+                icon: const Icon(Icons.favorite),
+              ),
             ),
           ),
           Padding(

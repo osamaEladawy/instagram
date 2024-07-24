@@ -5,12 +5,15 @@ import 'package:inistagram/app/user/presentation/widgets/profile/savesforuser.da
 class TabsForPosts extends StatefulWidget {
   final String uid;
   final String postId;
- 
 
-  const TabsForPosts({super.key, required this.uid, required this.postId,});
+  const TabsForPosts({
+    super.key,
+    required this.uid,
+    required this.postId,
+  });
 
   @override
-  State<TabsForPosts> createState() => _TabsForPostsState(); 
+  State<TabsForPosts> createState() => _TabsForPostsState();
 }
 
 class _TabsForPostsState extends State<TabsForPosts>
@@ -38,33 +41,32 @@ class _TabsForPostsState extends State<TabsForPosts>
             icon: Icon(
               Icons.grid_on_sharp,
             ),
+            text: "posts",
           ),
-          Tab(
-            icon: Icon(Icons.bookmark_outline),
-          ),
-          Tab(
-            icon: Icon(
-              Icons.person,
-            ),
-          ),
+          Tab(icon: Icon(Icons.bookmark_outline), text: "saves"),
+          Tab(icon: Icon(Icons.person), text: "tags"),
         ]),
-        SizedBox(
+        Container(
+          color: Colors.red,
           width: MediaQuery.of(context).size.width,
-          //height: 370,
-          height: MediaQuery.of(context).size.height - 365,
-          child: TabBarView(
-            controller: controller, children: [
+          height: MediaQuery.of(context).size.height * 0.50,
+          child: TabBarView(controller: controller, children: [
             PostsForUser(uid: widget.uid),
-            SavesForUser(uid: widget.uid, postId: widget.postId,),
-            GridView.builder(
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: Image.asset("assets/images/profile_default.png"),
-                );
-              },
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, crossAxisSpacing: 5, mainAxisSpacing: 5),
+            SavesForUser(
+              uid: widget.uid,
+              postId: widget.postId,
+            ),
+            Expanded(
+              child: GridView.builder(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: Image.asset("assets/images/profile_default.png"),
+                  );
+                },
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3, crossAxisSpacing: 5, mainAxisSpacing: 5),
+              ),
             ),
           ]),
         )

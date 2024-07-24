@@ -108,7 +108,6 @@ class MyApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: Colors.black),
           themeMode: ThemeMode.system,
-         // home: const VideoPlayerScreen(),
       initialRoute: "/",
       onGenerateRoute: OnGenerateRoute.route,
     );
