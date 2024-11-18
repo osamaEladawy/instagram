@@ -7,7 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:465195890091:android:09b5f0bf7ecc63716aceee",
+        "mobilesdk_app_id": "1:465195890091:android:5b6a4f8afd5363616aceee",
         "android_client_info": {
           "package_name": "com.classcar200.inistagram"
         }
@@ -29,6 +29,13 @@
             {
               "client_id": "465195890091-io3c70de23rrchtvibngv45alqi9n1jg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "465195890091-o0aesbkg3ju35m14p2biq03ri7k83vif.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.classcar200.inistagram"
+              }
             }
           ]
         }

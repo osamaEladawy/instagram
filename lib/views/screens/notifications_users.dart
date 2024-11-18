@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:inistagram/controller/user_providers.dart';
 import 'package:inistagram/core/class/handel_request.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/view_model/notification/notification_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/globel/functions/navigationpage.dart';
+import '../../core/functions/navigationpage.dart';
 import '../post/actions_post.dart';
 
 class NotificationsUsers extends StatefulWidget {

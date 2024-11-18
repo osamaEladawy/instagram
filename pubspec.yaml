@@ -47,17 +47,13 @@ dependencies:
 #  share image from fills
   file_picker:
   uuid:
-#  intl: ^0.19.0
   intl:
   flutter_staggered_grid_view:
   http:
   shared_preferences:
   share_plus:
   fluttertoast: 8.2.4
-  video_player:
-#  video_uploader:
-  
-
+  video_player:  
   cached_network_image:
   flutter_bloc:
   equatable:
@@ -71,13 +67,17 @@ dependencies:
   giphy_picker:
   flutter_sound:
   path_provider:
-  audioplayers:
+  audioplayers: 
   just_audio:
   flutter_story_view:
   # video_player_media_kit:
   flutter_offline:
   dartz:
   badges: 
+  chewie:
+  easy_localization: 
+  flutter_screenutil: ^5.9.3
+  google_sign_in: 
 
 
 
@@ -97,8 +97,10 @@ flutter_launcher_icons:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-#  flutter_lints: ^3.0.0
-  flutter_lints: ^2.0.3
+  # flutter_lints: ^3.0.0
+  # flutter_lints: ^2.0.3
+  flutter_lints: ^4.0.0
+
 
 
 # For information on the generic Dart part of this file, see the

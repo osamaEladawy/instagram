@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:inistagram/core/functions/notification.dart';
+import 'package:inistagram/core/class/notification.dart';
 import 'package:inistagram/view_model/responsive/mobile_viewmodel.dart';
 
 class MobileScreen extends StatefulWidget {

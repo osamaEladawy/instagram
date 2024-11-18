@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/data/model/post_model.dart';
+import 'package:inistagram/core/shared/model/post_model.dart';
 import 'package:inistagram/views/post/post.dart';
 
 class PostSActions extends StatefulWidget {
@@ -13,8 +13,7 @@ class PostSActions extends StatefulWidget {
       {super.key,
       required this.postId,
       required this.message,
-      required this.post
-      });
+      required this.post});
 
   @override
   State<PostSActions> createState() => _PostSActionsState();
@@ -43,6 +42,7 @@ class _PostSActionsState extends State<PostSActions> {
                         PostModel model = PostModel.fromSnapshot(result);
                         return PostPage(
                           postSnap: model, snapshot: result,
+                          isCommentPage: false,
                           //index: index,
                         );
                       }),

@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/functions/firestore_methods.dart';
-import 'package:inistagram/main.dart';
+import 'package:inistagram/core/class/firestore_methods.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
+import 'package:inistagram/core/storage/pref_services.dart';
 import 'package:inistagram/view_model/comment/comment_view_model.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller/user_providers.dart';
 import '../widgets/auth/custom_dialog.dart';
 import '../widgets/post/like_animation.dart';
 
@@ -281,8 +281,8 @@ class _CommentCardState extends State<CommentCard> {
                                                       likes[index].toString();
                                                   List convertToList =
                                                       res.split(' ');
-                                                  String getUsers = preferences
-                                                      .getString('uid')!;
+                                                  String getUsers =PrefServices
+                                                      .getData(key:'uid')!;
                                                   return Card(
                                                     child: ListTile(
                                                       onTap: () {},

@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:inistagram/core/const/page_const.dart';
-import 'package:inistagram/core/globel/functions/navigationpage.dart';
-import '../../core/functions/firestore_methods.dart';
-import '../../core/shared/snackbar.dart';
+import 'package:inistagram/core/functions/navigationpage.dart';
+import '../../core/class/firestore_methods.dart';
+import '../../core/functions/snackbar.dart';
 import 'package:path/path.dart' as Path;
 
 class PostViewModel {
@@ -81,7 +81,7 @@ class PostViewModel {
         print("===============================userData");
       }
     } catch (e) {
-      showSnackBar(e.toString(), context);
+      showSnackBar(e.toString());
     }
     loading = false;
   }
@@ -95,7 +95,7 @@ class PostViewModel {
           .get();
       commentIndex = snapshot.docs.length;
     } catch (e) {
-      showSnackBar(e.toString(), context);
+      showSnackBar(e.toString());
     }
   }
 
@@ -112,8 +112,8 @@ class PostViewModel {
           Future.delayed(const Duration(milliseconds: 500));
           navigationNamePage(context, PageConst.initialPage);
           return uid == FirebaseAuth.instance.currentUser?.uid
-              ? showSnackBar("your post Deleting now", context)
-              : showSnackBar("this post Deleting now", context);
+              ? showSnackBar("your post Deleting now",)
+              : showSnackBar("this post Deleting now",);
         }).then((value) async {
           return await deleteSavePost(postId, context);
         });
@@ -151,11 +151,12 @@ class PostViewModel {
     await FirebaseFirestore.instance
         .collection("posts")
         .doc(postId)
-        .update({"isSave": false}).then((value) {
-      Future.delayed(const Duration(milliseconds: 3000)).then((value) {
-        return showSnackBar("post unSave now", context);
-      });
-    });
+        .update({"isSave": false});
+    //     .then((value) {
+    //   Future.delayed(const Duration(milliseconds: 3000)).then((value) {
+    //     return showSnackBar("post unSave now", context);
+    //   });
+    // });
 
     print("post save delete================================post");
   }
@@ -209,8 +210,7 @@ class PostViewModel {
       required currentUserIdFromDatabase,
       required postIdFromDatabase,
       context}) async {
-    await storageMethod
-        .savePost(
+    await storageMethod.savePost(
       useruidForPost: useruidForPost,
       currentUserId: currentUserId,
       usernameForPost: usernameForPost,
@@ -222,11 +222,6 @@ class PostViewModel {
       currentUserIdFromDatabase: currentUserIdFromDatabase,
       postIdFromDatabase: postIdFromDatabase,
       datePublishedForPost: datePublishedForPost,
-    )
-        .then((value) {
-      Future.delayed(const Duration(milliseconds: 1000)).then((value) {
-        return showSnackBar("post Save now", context);
-      });
-    });
+    );
   }
 }

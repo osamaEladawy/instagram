@@ -3,17 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
-import 'package:inistagram/app/status/presentation/pages/status_page.dart';
-import 'package:inistagram/core/shared/snackbar.dart';
-import 'package:inistagram/data/model/post_model.dart';
+import 'package:inistagram/features/status/presentation/pages/status_page.dart';
+import 'package:inistagram/core/shared/model/post_model.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/views/widgets/auth/dialog.dart';
 import 'package:provider/provider.dart';
-import '../../controller/user_providers.dart';
 import '../../core/class/handel_request.dart';
 import '../../core/const/page_const.dart';
-import '../../core/functions/notification.dart';
-import '../../core/globel/functions/navigationpage.dart';
-import '../../core/shared/constant.dart';
+import '../../core/class/notification.dart';
+import '../../core/functions/navigationpage.dart';
+import '../../core/class/share_data.dart';
 import '../../view_model/home/home_view_model.dart';
 import '../post/post.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
@@ -81,7 +80,7 @@ class _HomePageState extends State<HomePage> {
         print('====================ForGround================');
 
         if (mounted) {
-          showSnackBar("${message.notification!.body}", context);
+          // showSnackBar("${message.notification!.body}", context);
         }
       }
     });
@@ -135,18 +134,20 @@ class _HomePageState extends State<HomePage> {
           showDialog(context: context, builder: (context) => const MyDialog());
         },
         child: OfflineBuilder(
-          connectivityBuilder:
-              (BuildContext context, ConnectivityResult value, Widget child) {
+          connectivityBuilder: (BuildContext context,
+              List<ConnectivityResult> value, Widget child) {
             final bool connect = value != ConnectivityResult.none;
             if (connect) {
-              return Column(
-                children: [
+              return CustomScrollView(
+                slivers: [
                   if (user != null)
-                    StatusPage(
-                      currentUser: user,
+                    SliverToBoxAdapter(
+                      child: StatusPage(
+                        currentUser: user,
+                      ),
                     ),
-                  const Divider(),
-                  Expanded(
+                  SliverToBoxAdapter(child: const Divider()),
+                  SliverToBoxAdapter(
                     child: StreamBuilder(
                       stream: model.getAllPosts(),
                       builder:
@@ -154,6 +155,7 @@ class _HomePageState extends State<HomePage> {
                         return HandelRequest(
                           snapshot: snapshot,
                           widget: ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: snapshot.data?.docs.length,
                               itemBuilder: (context, index) {
@@ -182,6 +184,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   child: PostPage(
                                     postSnap: model, snapshot: result,
+                                    isCommentPage: false,
                                     // index: index,
                                   ),
                                 );
@@ -197,8 +200,8 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
-                    Text("no internet\n please check your internet and try again"),
+                    Text(
+                        "no internet\n please check your internet and try again"),
                   ],
                 ),
               );

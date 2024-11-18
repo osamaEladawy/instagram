@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inistagram/controller/user_providers.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:provider/provider.dart';
 
 class ResponsivePage extends StatefulWidget {

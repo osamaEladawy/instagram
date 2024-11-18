@@ -8,20 +8,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:inistagram/app/chat/domain/entities/message_replay_entity.dart';
-import 'package:inistagram/app/chat/presentation/manager/message/message_cubit.dart';
+import 'package:inistagram/features/chat/domain/entities/message_replay_entity.dart';
+import 'package:inistagram/features/chat/presentation/manager/message/message_cubit.dart';
 import 'package:inistagram/core/const/app_const.dart';
 
-class ChatViewModel{
-    bool isShowEmojiKeyboard = false;
+class ChatViewModel {
+  bool isShowEmojiKeyboard = false;
   FocusNode focusNode = FocusNode();
 
   void _hideEmojiContainer() {
-      isShowEmojiKeyboard = false;
+    isShowEmojiKeyboard = false;
   }
 
   void _showEmojiContainer() {
-      isShowEmojiKeyboard = true;
+    isShowEmojiKeyboard = true;
   }
 
   void _showKeyboard() => focusNode.requestFocus();
@@ -38,22 +38,19 @@ class ChatViewModel{
     }
   }
 
-  final TextEditingController textMessageController =TextEditingController();
+  final TextEditingController textMessageController = TextEditingController();
 
   final ScrollController scrollController = ScrollController();
 
-   bool isDisplaySendButton = false;
+  bool isDisplaySendButton = false;
 
-  
-
-   bool isShowAttachWindow = false;
+  bool isShowAttachWindow = false;
 
   FlutterSoundRecorder? soundRecorder;
 
   final bool isRecording = false;
 
   bool isRecordInit = false;
-
 
   Future<void> scrollToBottom() async {
     if (scrollController.hasClients) {
@@ -85,13 +82,13 @@ class ChatViewModel{
           await ImagePicker.platform.getImage(source: ImageSource.gallery);
 
       //setState(() {
-        if (pickedFile != null) {
-          image = File(pickedFile.path);
-        } else {
-          if (kDebugMode) {
-            print("no image has been selected");
-          }
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+      } else {
+        if (kDebugMode) {
+          print("no image has been selected");
         }
+      }
       //});
     } catch (e) {
       toast("some error occured $e");
@@ -108,13 +105,13 @@ class ChatViewModel{
           await ImagePicker.platform.pickVideo(source: ImageSource.gallery);
 
       //setState(() {
-        if (pickedFile != null) {
-          video = File(pickedFile.path);
-        } else {
-          if (kDebugMode) {
-            print("no image has been selected");
-          }
+      if (pickedFile != null) {
+        video = File(pickedFile.path);
+      } else {
+        if (kDebugMode) {
+          print("no image has been selected");
         }
+      }
       //});
     } catch (e) {
       toast("some error occured $e");
@@ -122,7 +119,7 @@ class ChatViewModel{
   }
 
   void onMessageSwipe(
-      {String? message, String? username, String? type, bool? isMe,context}) {
+      {String? message, String? username, String? type, bool? isMe, context}) {
     BlocProvider.of<MessageCubit>(context).setMessageReplay =
         MessageReplayEntity(
             message: message,
@@ -130,5 +127,4 @@ class ChatViewModel{
             messageType: type,
             isMe: isMe);
   }
-
 }

@@ -4,8 +4,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:giphy_picker/giphy_picker.dart';
+import 'package:inistagram/core/const/colors.dart';
 
-import '../theme/style.dart';
 
 void toast( String message ) {
   Fluttertoast.showToast(

@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:inistagram/controller/user_providers.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/functions/firestore_methods.dart';
-import 'package:inistagram/core/globel/functions/navigationpage.dart';
-import 'package:inistagram/data/model/save_posts.dart';
+import 'package:inistagram/core/class/firestore_methods.dart';
+import 'package:inistagram/core/functions/navigationpage.dart';
+import 'package:inistagram/core/shared/model/save_posts.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/view_model/savepost/savePost_view_model.dart';
 import 'package:inistagram/views/savepost/commentt_savepost.dart';
 import 'package:inistagram/views/widgets/post/like_animation.dart';

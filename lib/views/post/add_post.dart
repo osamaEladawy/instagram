@@ -6,24 +6,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_story_view/models/story_item.dart';
-import 'package:inistagram/app/status/domain/entities/status_entity.dart';
-import 'package:inistagram/app/status/domain/entities/status_image_entity.dart';
-import 'package:inistagram/app/status/domain/use_cases/get_my_status_future_usecase.dart';
-import 'package:inistagram/app/status/presentation/manager/status/status_cubit.dart';
-import 'package:inistagram/app/user/domain/entities/user_entity.dart';
-import 'package:inistagram/controller/user_providers.dart';
+import 'package:inistagram/features/status/domain/entities/status_entity.dart';
+import 'package:inistagram/features/status/domain/entities/status_image_entity.dart';
+import 'package:inistagram/features/status/domain/use_cases/get_my_status_future_usecase.dart';
+import 'package:inistagram/features/status/presentation/manager/status/status_cubit.dart';
+import 'package:inistagram/features/user/domain/entities/user_entity.dart';
 import 'package:inistagram/core/const/page_const.dart';
-import 'package:inistagram/core/globel/widgets/sigle_chate/show_image_and_video.dart';
-import 'package:inistagram/storage/storage_provider.dart';
+import 'package:inistagram/core/shared/sigle_chate/show_image_and_video.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
+import 'package:inistagram/core/providers/storage_provider.dart';
 import 'package:inistagram/view_model/post/add_post_model.dart';
 import 'package:inistagram/views/screens/home.dart';
 import 'package:inistagram/views/widgets/auth/custom_textfield.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/class/handle_image.dart';
-import '../../core/functions/firestore_methods.dart';
-import '../../core/globel/functions/navigationpage.dart';
-import '../../core/shared/snackbar.dart';
+import '../../core/class/firestore_methods.dart';
+import '../../core/functions/navigationpage.dart';
+import '../../core/functions/snackbar.dart';
 import 'package:path/path.dart' as path;
 import 'package:inistagram/main_injection_container.dart' as di;
 
@@ -183,7 +183,7 @@ class _AddPostState extends State<AddPost> {
         String res = await FireStoreMethods().uploadPost(uid, service.file!,
             _model.description.text, username, profileImage, context);
         if (res == "success") {
-          showSnackBar("Posted", context);
+          showSnackBar("Posted");
           _model.description.clear();
           _model.clearFile(context);
           setState(() {
@@ -194,16 +194,16 @@ class _AddPostState extends State<AddPost> {
           setState(() {
             _model.loading = false;
           });
-          showSnackBar(res, context);
+          showSnackBar(res);
         }
       } catch (e) {
         setState(() {
           _model.loading = false;
         });
-        showSnackBar(e.toString(), context);
+        showSnackBar(e.toString());
       }
     } else {
-      showSnackBar("not valid", context);
+      showSnackBar("not valid");
     }
   }
 
@@ -229,7 +229,7 @@ class _AddPostState extends State<AddPost> {
             profileImage: profileImage,
             file: service.file!);
         if (res == "success") {
-          showSnackBar("Piles is uploaded", context);
+          showSnackBar("Piles is uploaded");
           _model.description.clear();
           _model.clearFile(context);
           setState(() {
@@ -240,16 +240,16 @@ class _AddPostState extends State<AddPost> {
           setState(() {
             _model.loading = false;
           });
-          showSnackBar(res, context);
+          showSnackBar(res);
         }
       } catch (e) {
         setState(() {
           _model.loading = false;
         });
-        showSnackBar(e.toString(), context);
+        showSnackBar(e.toString());
       }
     } else {
-      showSnackBar("not valid", context);
+      showSnackBar("not valid");
     }
   }
 

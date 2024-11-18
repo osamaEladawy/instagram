@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/data/model/post_model.dart';
+import 'package:inistagram/core/shared/model/post_model.dart';
 
-import '../../app/user/data/remote/models/user_model.dart';
+import '../../features/user/data/remote/models/user_model.dart';
 import '../../core/const/page_const.dart';
-import '../../core/globel/functions/navigationpage.dart';
+import '../../core/functions/navigationpage.dart';
 import '../../view_model/search/search_view_model.dart';
 
 class SearchPage extends StatefulWidget {

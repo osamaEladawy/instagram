@@ -3,22 +3,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:inistagram/controller/user_providers.dart';
 import 'package:inistagram/core/class/handel_request.dart';
 import 'package:inistagram/core/const/page_const.dart';
-import 'package:inistagram/core/functions/firestore_methods.dart';
+import 'package:inistagram/core/class/firestore_methods.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/view_model/post/post_view_model.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
-import '../../core/globel/functions/navigationpage.dart';
-import '../../data/model/post_model.dart';
+import '../../core/functions/navigationpage.dart';
+import '../../core/shared/model/post_model.dart';
 import '../comment/comment_page.dart';
 import '../widgets/post/like_animation.dart';
 
 class PostPage extends StatefulWidget {
   final PostModel postSnap;
   final QueryDocumentSnapshot snapshot;
+  final bool isCommentPage;
 
   //final int index;
 
@@ -26,6 +27,7 @@ class PostPage extends StatefulWidget {
     super.key,
     required this.postSnap,
     required this.snapshot,
+    required this.isCommentPage,
     //required this.index,
   });
 
@@ -38,7 +40,7 @@ class _PostPageState extends State<PostPage> {
 
   getMyPosts() async {
     await model.getPosts();
-     if (mounted) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -127,9 +129,7 @@ class _PostPageState extends State<PostPage> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               if (user != null)
                 InkWell(
                   onDoubleTap: () async {
@@ -210,14 +210,15 @@ class _PostPageState extends State<PostPage> {
                             )),
                       IconButton(
                         onPressed: () {
-                          navigationPage(
-                            context,
-                            CommentPage(
-                              postModel: widget.snapshot,
-                              userId: "${model.userData['uid']}",
-                              model: widget.postSnap,
-                            ),
-                          );
+                          if (!widget.isCommentPage)
+                            navigationPage(
+                              context,
+                              CommentPage(
+                                postModel: widget.snapshot,
+                                userId: "${model.userData['uid']}",
+                                model: widget.postSnap,
+                              ),
+                            );
                         },
                         icon: const Icon(Icons.comment_outlined),
                       ),
@@ -235,9 +236,9 @@ class _PostPageState extends State<PostPage> {
                   ),
                   Spacer(),
                   if (user != null)
-                    //  user.uid == model.savePostData['currentUserId'] &&
-                    //         widget.postSnap.postId ==
-                    //             model.savePostData['postId'] &&
+                    user.uid == model.savePostData['currentUserId'] &&
+                            widget.postSnap.postId ==
+                                model.savePostData['postId'] &&
                             widget.postSnap.isSave == true
                         ? IconButton(
                             onPressed: () async {

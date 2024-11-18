@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
-import '../functions/storaged_method.dart';
+import 'storaged_method.dart';
 import 'package:path/path.dart' as path;
 
 
@@ -32,6 +32,7 @@ class HandleImage extends ChangeNotifier {
           .uploadImage("profile", imageName, file!, false);
     }
     notifyListeners();
+    
   }
 
   getImageCamera() async {

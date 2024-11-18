@@ -136,6 +136,7 @@ class CustomTextFormFieldPost extends StatelessWidget {
       //   }
       // },
       controller: controller,
+      autofocus: true,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(15),
         suffixIcon: IconButton(

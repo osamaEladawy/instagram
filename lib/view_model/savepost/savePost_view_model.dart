@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:inistagram/core/functions/firestore_methods.dart';
+import 'package:inistagram/core/class/firestore_methods.dart';
 import 'package:path/path.dart' as Path;
 
-import '../../core/shared/snackbar.dart';
+import '../../core/functions/snackbar.dart';
 
 class SavePostViewModel {
   TextEditingController text = TextEditingController();
@@ -58,7 +58,7 @@ class SavePostViewModel {
       commentIndex = snapshot.docs.length;
       //setState(() {});
     } catch (e) {
-      showSnackBar(e.toString(), context);
+      showSnackBar(e.toString());
     }
   }
 

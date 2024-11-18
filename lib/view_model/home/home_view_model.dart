@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../core/shared/snackbar.dart';
+import '../../core/functions/snackbar.dart';
 
 class HomeViewModel {
   late Timestamp time;
@@ -79,7 +79,7 @@ class HomeViewModel {
       print(users);
       print("====================================users");
     } catch (e) {
-      showSnackBar("no data for users", context);
+      showSnackBar("no data for users");
     }
     loading = false;
   }
@@ -142,7 +142,7 @@ class HomeViewModel {
         commentIndex = snapshot.docs.length;
       }
     } catch (e) {
-      showSnackBar(e.toString(), context);
+      showSnackBar(e.toString());
     }
   }
 }

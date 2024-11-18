@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../core/functions/firestore_methods.dart';
-import '../../core/shared/snackbar.dart';
+import '../../core/class/firestore_methods.dart';
+import '../../core/functions/snackbar.dart';
 
 class CommentViewModel {
   final TextEditingController comment = TextEditingController();
@@ -47,10 +47,10 @@ class CommentViewModel {
             postUserId: postUserId)
         .then((value) {
       if (FirebaseAuth.instance.currentUser!.uid == commentUserId) {
-        showSnackBar("you deleted This post", context);
+        //showSnackBar("you deleted This post", context);
         Navigator.of(context).maybePop();
       } else {
-        showSnackBar("$usernameComment deleted This post", context);
+        showSnackBar("$usernameComment deleted This post");
         Navigator.of(context).maybePop();
       }
     });
@@ -77,7 +77,7 @@ class CommentViewModel {
       );
       comment.clear();
     } else {
-      showSnackBar("Please Enter the comment", context);
+      showSnackBar("Please Enter the comment");
     }
   }
 

@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:inistagram/controller/user_providers.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/theme/style.dart';
-import 'package:inistagram/data/model/comment_save_post_model.dart';
-import 'package:inistagram/data/model/save_posts.dart';
+import 'package:inistagram/core/const/colors.dart';
+import 'package:inistagram/core/shared/model/comment_save_post_model.dart';
+import 'package:inistagram/core/shared/model/save_posts.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/view_model/savepost/savePost_view_model.dart';
 import 'package:inistagram/views/widgets/auth/custom_textfield.dart';
 import 'package:jiffy/jiffy.dart';
@@ -213,7 +213,7 @@ class _CommentSavePostState extends State<CommentSavePost> {
                                 children: [
                                   IconButton(
                                     onPressed: () async {
-                                    await _model.likeComment(
+                                      await _model.likeComment(
                                           userId: user!.toSnapshot().toString(),
                                           postId: widget.postData.postId!,
                                           commentId: model.commentId!,
@@ -222,22 +222,28 @@ class _CommentSavePostState extends State<CommentSavePost> {
                                           commentUserId: model.useruid!,
                                           postUrl: widget.postData.postUrl!);
                                     },
-                                    icon:  Icon( model.likes!.contains(user?.toSnapshot().toString()) ?
-                                      Icons.favorite :Icons.favorite_border,
-
-                                      color:model.likes!.contains(user?.toSnapshot().toString()) ? Colors.red : null,
+                                    icon: Icon(
+                                      model.likes!.contains(
+                                              user?.toSnapshot().toString())
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: model.likes!.contains(
+                                              user?.toSnapshot().toString())
+                                          ? Colors.red
+                                          : null,
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: (){},
-                                      child: Container(
+                                    onTap: () {},
+                                    child: Container(
                                         alignment: Alignment.center,
                                         height: 30,
-                                         // width: 20,
-                                          decoration: BoxDecoration(
-                                            border: Border.all()
-                                          ),
-                                          child: Text(model.likes!.length.toString())),),
+                                        // width: 20,
+                                        decoration:
+                                            BoxDecoration(border: Border.all()),
+                                        child: Text(
+                                            model.likes!.length.toString())),
+                                  ),
                                 ],
                               )
                             ],

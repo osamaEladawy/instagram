@@ -2,13 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/theme/style.dart';
+import 'package:inistagram/core/const/colors.dart';
+import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/views/post/post.dart';
 import 'package:inistagram/views/widgets/auth/custom_textfield.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller/user_providers.dart';
-import '../../data/model/post_model.dart';
+import '../../core/shared/model/post_model.dart';
 import '../../view_model/comment/comment_view_model.dart';
 import 'commenet_card.dart';
 
@@ -91,32 +91,22 @@ class _CommentPageState extends State<CommentPage> {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection("posts")
-                    .where("postId", isEqualTo: widget.model.postId)
-                    .snapshots(),
-                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  return HandelRequest(
-                    snapshot: snapshot,
-                    widget: PostPage(
-                      postSnap: widget.model,
-                      snapshot: widget.postModel,
-                    ),
-                  );
-                }),
-            const Divider(),
-            Expanded(
-              child: StreamBuilder(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              PostPage(
+                postSnap: widget.model,
+                snapshot: widget.postModel, isCommentPage: true,
+              ),
+              const Divider(),
+              StreamBuilder(
                 stream: _model.getAllComments(widget.postModel['postId']),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   return HandelRequest(
                     snapshot: snapshot,
                     widget: ListView.builder(
                         shrinkWrap: true,
-                       // physics: NeverScrollableScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: snapshot.data?.docs.length,
                         itemBuilder: (context, index) {
                           QueryDocumentSnapshot result =
@@ -129,8 +119,8 @@ class _CommentPageState extends State<CommentPage> {
                   );
                 },
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }
