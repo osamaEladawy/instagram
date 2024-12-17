@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,8 +11,15 @@ import 'package:inistagram/features/calls/presentation/manager/agora/agora_cubit
 import 'package:inistagram/features/calls/presentation/manager/call/call_cubit.dart';
 import 'package:inistagram/features/calls/presentation/manager/my_call/my_call_history_cubit.dart';
 import 'package:inistagram/features/chat/presentation/manager/message/message_cubit.dart';
+import 'package:inistagram/features/comments/cubit/comments_cubit.dart';
+import 'package:inistagram/features/home/cubit/home_cubit.dart';
+import 'package:inistagram/features/notifications/cubit/notifications_cubit.dart';
+import 'package:inistagram/features/posts/cubit/posts_cubit.dart';
 import 'package:inistagram/features/riles/presentation/manager/get_my_riles/cubit/get_my_riles_cubit.dart';
 import 'package:inistagram/features/riles/presentation/manager/riles/cubit/riles_cubit.dart';
+import 'package:inistagram/features/save_posts/cubit/save_posts_cubit.dart';
+import 'package:inistagram/features/search/cubit/search_cubit.dart';
+import 'package:inistagram/features/settings/cubit/settings_cubit.dart';
 import 'package:inistagram/features/status/presentation/manager/get_my_status/get_my_status_cubit.dart';
 import 'package:inistagram/features/status/presentation/manager/status/status_cubit.dart';
 import 'package:inistagram/features/user/presentation/manager/auth/auth_cubit.dart';
@@ -56,9 +64,19 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => di.sl<AgoraCubit>()),
             BlocProvider(create: (context) => di.sl<GetMyRilesCubit>()),
             BlocProvider(create: (context) => di.sl<RilesCubit>()),
+            BlocProvider(create: (context) => di.sl<SearchCubit>()),
+            BlocProvider(create: (context) => di.sl<NotificationsCubit>()),
+            BlocProvider(create: (context) => di.sl<SettingsCubit>()),
+            BlocProvider(create: (context) => di.sl<PostsCubit>()),
+            BlocProvider(create: (context) => di.sl<CommentsCubit>()),
+            BlocProvider(create: (context) => di.sl<SavePostsCubit>()),
+            BlocProvider(create: (context) => di.sl<HomeCubit>()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
             navigatorKey: navigatorKey,
             theme: ThemeData.dark().copyWith(
                 appBarTheme: const AppBarTheme(

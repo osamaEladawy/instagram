@@ -8,7 +8,7 @@ import 'package:inistagram/core/const/page_const.dart';
 import 'package:inistagram/core/class/firestore_methods.dart';
 import 'package:inistagram/core/functions/navigationpage.dart';
 import 'package:inistagram/features/user/presentation/manager/auth/auth_cubit.dart';
-import 'package:inistagram/views/widgets/profile/follow_button.dart';
+import 'package:inistagram/features/user/presentation/widgets/profile/follow_button.dart';
 
 class DetailsForUser extends StatelessWidget {
   final UserEntity userEntity;

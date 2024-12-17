@@ -6,13 +6,13 @@ import 'package:inistagram/core/const/page_const.dart';
 import 'package:inistagram/core/functions/extinctions.dart';
 import 'package:inistagram/core/functions/profile_widget.dart';
 import 'package:inistagram/core/functions/snackbar.dart';
-import 'package:inistagram/core/shared/widgets/stackforimageuser.dart';
+import 'package:inistagram/shared/widgets/stackforimageuser.dart';
 import 'package:inistagram/features/user/presentation/manager/auth/auth_cubit.dart';
 
-import '../../../../views/widgets/auth/custom_button.dart';
-import '../../../../views/widgets/auth/custom_textfield.dart';
-import '../../../../views/widgets/auth/dialog.dart';
-import '../../../../views/widgets/auth/have_account_or_not.dart';
+import '../widgets/auth/custom_button.dart';
+import '../widgets/auth/custom_textfield.dart';
+import '../widgets/auth/dialog.dart';
+import '../widgets/auth/have_account_or_not.dart';
 
 class SignUp extends StatelessWidget {
   final void Function()? onTap;

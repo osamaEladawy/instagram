@@ -39,12 +39,7 @@ class _TabsForPostsState extends State<TabsForPosts>
     return Column(
       children: [
         TabBar(controller: controller, tabs: const [
-          Tab(
-            icon: Icon(
-              Icons.grid_on_sharp,
-            ),
-            text: "posts",
-          ),
+          Tab(icon: Icon(Icons.grid_on_sharp), text: "posts"),
           Tab(icon: Icon(Icons.bookmark_outline), text: "saves"),
           Tab(icon: Icon(Icons.person), text: "tags"),
         ]),

@@ -14,7 +14,7 @@ import 'package:inistagram/features/user/presentation/widgets/editprofile.dart/s
 import 'package:inistagram/core/const/app_const.dart';
 import 'package:inistagram/core/const/page_const.dart';
 import 'package:inistagram/core/functions/navigationpage.dart';
-import 'package:inistagram/core/shared/widgets/stackforimageuser.dart';
+import 'package:inistagram/shared/widgets/stackforimageuser.dart';
 import 'package:inistagram/core/providers/storage_provider.dart';
 import 'package:provider/provider.dart';
 import '../../domain/entities/user_entity.dart';

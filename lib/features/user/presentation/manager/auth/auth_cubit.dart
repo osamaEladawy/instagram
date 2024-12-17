@@ -18,7 +18,7 @@ import 'package:inistagram/features/user/domain/use_cases/auth/login_use_cases.d
 import 'package:inistagram/features/user/domain/use_cases/auth/register_use_cases.dart';
 import 'package:inistagram/features/user/domain/use_cases/user/create_user_usecases.dart';
 import 'package:inistagram/my_app.dart';
-import 'package:inistagram/views/widgets/auth/custom_dialog.dart';
+import 'package:inistagram/features/user/presentation/widgets/auth/custom_dialog.dart';
 
 import '../../../domain/use_cases/credential/get_current_uid_usecasses.dart';
 import '../../../domain/use_cases/credential/is_sign_in_usecases.dart';

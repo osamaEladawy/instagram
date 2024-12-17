@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:inistagram/core/const/colors.dart';
 
 import '../../../../core/functions/data_formates.dart';
-import '../../../../core/shared/widgets/list_tile_of_user.dart';
+import '../../../../shared/widgets/list_tile_of_user.dart';
 
 class ListOfHistoryCalls extends StatelessWidget {
   const ListOfHistoryCalls({super.key});

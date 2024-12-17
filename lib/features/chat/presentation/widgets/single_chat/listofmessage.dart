@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:swipe_to/swipe_to.dart';
 
 import '../../../../../core/const/message_type_const.dart';
-import '../../../../../core/shared/widgets/display_alret.dart';
+import '../../../../../shared/widgets/display_alret.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/entities/message_replay_entity.dart';
 import '../../manager/message/message_cubit.dart';

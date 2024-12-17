@@ -7,14 +7,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_story_view/flutter_story_view.dart';
 import 'package:flutter_story_view/models/story_item.dart';
 import 'package:inistagram/core/const/colors.dart';
-import 'package:inistagram/core/shared/widgets/profile_widget.dart';
+import 'package:inistagram/shared/widgets/profile_widget.dart';
 import 'package:inistagram/features/user/presentation/pages/initialpage.dart';
 import 'package:provider/provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:inistagram/main_injection_container.dart' as di;
 
 import '../../../../core/const/page_const.dart';
-import '../../../../core/shared/sigle_chate/show_image_and_video.dart';
+import '../../../../shared/sigle_chate/show_image_and_video.dart';
 import '../../../../core/providers/storage_provider.dart';
 import '../../../user/domain/entities/user_entity.dart';
 import '../../domain/entities/status_entity.dart';

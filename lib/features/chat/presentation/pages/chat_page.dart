@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../../../../core/const/page_const.dart';
 import '../../../../core/functions/navigationpage.dart';
-import '../../../../core/shared/widgets/profile_widget.dart';
+import '../../../../shared/widgets/profile_widget.dart';
 import '../../domain/entities/chat_entity.dart';
 import '../../domain/entities/message_entity.dart';
 import '../manager/chat/chat_cubit.dart';

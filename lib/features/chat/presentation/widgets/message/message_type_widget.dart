@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:inistagram/core/const/colors.dart';
 
 import '../../../../../core/const/message_type_const.dart';
-import '../../../../../core/shared/widgets/profile_widget.dart';
+import '../../../../../shared/widgets/profile_widget.dart';
 import 'message_audio_widget.dart';
 import 'message_video_widget.dart';
 

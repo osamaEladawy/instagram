@@ -5,8 +5,8 @@ import 'package:inistagram/core/const/colors.dart';
 import 'package:inistagram/features/riles/domain/entities/riles_entity.dart';
 import 'package:inistagram/features/riles/presentation/manager/riles/cubit/riles_cubit.dart';
 import 'package:inistagram/features/riles/presentation/widgets/delete_riles_update_alert.dart';
-import 'package:inistagram/core/shared/widgets/profile_widget.dart';
-import 'package:inistagram/views/screens/home.dart'; 
+import 'package:inistagram/shared/widgets/profile_widget.dart';
+import 'package:inistagram/features/home/screens/home.dart'; 
 
 class MyRilesPage extends StatefulWidget {
   final RilesEntity riles;

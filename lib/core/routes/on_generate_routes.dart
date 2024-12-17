@@ -6,8 +6,8 @@ import 'package:inistagram/features/user/domain/entities/user_entity.dart';
 import 'package:inistagram/features/chat/presentation/pages/friends.dart';
 import 'package:inistagram/features/user/presentation/pages/edit_profile_page.dart';
 import 'package:inistagram/features/user/presentation/pages/initialpage.dart';
-import 'package:inistagram/views/responsive/responsive_page.dart';
-import 'package:inistagram/views/screens/home.dart';
+import 'package:inistagram/features/responsive/screens/responsive_page.dart';
+import 'package:inistagram/features/home/screens/home.dart';
 import 'package:inistagram/features/user/presentation/pages/profile_page.dart';
 
 import '../../features/chat/domain/entities/message_entity.dart';
@@ -16,7 +16,7 @@ import '../../features/chat/presentation/pages/single_chat_page.dart';
 import '../const/page_const.dart';
 import '../../features/user/presentation/pages/login.dart';
 import '../../features/user/presentation/pages/signup.dart';
-import '../../views/screens/notifications_users.dart';
+import '../../features/notifications/screens/notifications_users.dart';
 
 class OnGenerateRoute {
   static Route<dynamic>? route(RouteSettings settings) {

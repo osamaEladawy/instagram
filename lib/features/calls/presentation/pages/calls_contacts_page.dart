@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:inistagram/core/const/colors.dart';
 
-import '../../../../core/shared/widgets/profile_widget.dart';
+import '../../../../shared/widgets/profile_widget.dart';
 
 
 class CallContactsPage extends StatefulWidget {

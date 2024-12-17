@@ -4,7 +4,7 @@ import 'package:get_time_ago/get_time_ago.dart';
 import 'package:inistagram/core/const/colors.dart';
 import 'package:inistagram/features/user/presentation/pages/initialpage.dart';
 
-import '../../../../core/shared/widgets/profile_widget.dart';
+import '../../../../shared/widgets/profile_widget.dart';
 import '../../domain/entities/status_entity.dart';
 import '../manager/status/status_cubit.dart';
 import '../widgets/delete_status_update_alert.dart';

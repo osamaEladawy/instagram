@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/shared/model/save_posts.dart';
-import 'package:inistagram/views/savepost/savepost_page.dart';
+import 'package:inistagram/shared/model/save_posts.dart';
+import 'package:inistagram/features/save_posts/screens/savepost_page.dart';
 
 class SavesForUser extends StatelessWidget {
   final String uid;
@@ -47,7 +48,7 @@ class SavesForUser extends StatelessWidget {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Image.network("${savePost.postUrl}",height: 100,),
+                            Image.network("${savePost.postUrl}", height: 80.h),
                             Text("${savePost.descriptionForPost}"),
                           ],
                         ),

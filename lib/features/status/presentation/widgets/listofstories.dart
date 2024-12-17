@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/class/handle_image.dart';
 import '../../../../core/functions/data_formates.dart';
-import '../../../../core/shared/widgets/list_tile_of_user.dart';
+import '../../../../shared/widgets/list_tile_of_user.dart';
 
 class ListOfStories extends StatelessWidget {
   const ListOfStories({super.key});

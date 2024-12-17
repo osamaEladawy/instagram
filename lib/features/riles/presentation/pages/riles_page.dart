@@ -14,15 +14,15 @@ import 'package:inistagram/features/riles/presentation/manager/get_my_riles/cubi
 import 'package:inistagram/features/riles/presentation/manager/riles/cubit/riles_cubit.dart';
 import 'package:inistagram/features/user/domain/entities/user_entity.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/shared/sigle_chate/show_image_and_video.dart';
+import 'package:inistagram/shared/sigle_chate/show_image_and_video.dart';
 import 'package:inistagram/core/providers/storage_provider.dart';
-import 'package:inistagram/views/screens/home.dart';
+import 'package:inistagram/features/home/screens/home.dart';
 import 'package:path/path.dart' as path;
 import 'package:inistagram/main_injection_container.dart' as di;
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../../../core/shared/model/relis_model.dart';
+import '../../../../shared/model/relis_model.dart';
 
 class RilesPage extends StatefulWidget {
   final UserEntity currentUser;

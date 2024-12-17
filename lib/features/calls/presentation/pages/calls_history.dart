@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inistagram/core/const/colors.dart';
 
 import '../../../../core/functions/data_formates.dart';
-import '../../../../core/shared/widgets/profile_widget.dart';
+import '../../../../shared/widgets/profile_widget.dart';
 import '../../../user/domain/entities/user_entity.dart';
 import '../manager/my_call/my_call_history_cubit.dart';
 

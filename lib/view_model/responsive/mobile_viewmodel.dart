@@ -4,10 +4,10 @@ import 'package:inistagram/features/riles/presentation/pages/riles_page.dart';
 import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:provider/provider.dart';
 
-import '../../views/post/add_post.dart';
-import '../../views/screens/home.dart';
+import '../../features/posts/screens/add_post.dart';
+import '../../features/home/screens/home.dart';
 import '../../features/user/presentation/pages/profile_page.dart';
-import '../../views/screens/search_page.dart';
+import '../../features/search/screens/search_page.dart';
 
 class MobileViewModel {
   int currentIndex = 0;
