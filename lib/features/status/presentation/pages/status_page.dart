@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:inistagram/main_injection_container.dart' as di;
 
-import '../../../../core/const/page_const.dart';
+import '../../../../core/routes/page_const.dart';
 import '../../../../shared/sigle_chate/show_image_and_video.dart';
 import '../../../../core/providers/storage_provider.dart';
 import '../../../user/domain/entities/user_entity.dart';

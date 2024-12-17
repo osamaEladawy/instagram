@@ -1,12 +1,20 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member, deprecated_member_use
 
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:agora_uikit/agora_uikit.dart';
+import 'package:contacts_service/contacts_service.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_sound/public/flutter_sound_recorder.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:inistagram/core/const/colors.dart';
+import 'package:inistagram/core/functions/extinctions.dart';
+import 'package:inistagram/core/functions/uni_list_storge.dart';
 import 'package:inistagram/shared/sigle_chate/show_image_picked.dart';
 import 'package:inistagram/shared/sigle_chate/show_video_picked.dart';
 import 'package:inistagram/features/chat/presentation/widgets/single_chat/checks.dart';
@@ -85,8 +93,124 @@ class _SingleChatPageState extends State<SingleChatPage> {
   bool _isRecording = false;
   bool _isRecordInit = false;
 
+
+  Uint8List? file;
+  void getImageForGallery() async {
+    final image = await pickUpStorage(ImageSource.gallery);
+    setState(() {
+      file = image;
+    });
+  }
+
+  String? audioFilePath;
+
+  void pickAudio() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.audio,
+      // allowedExtensions: [
+      //   'mp3',
+      //   'wav',
+      //   'ogg',
+      //   // 'aac',
+      //   // 'flac',
+      // ], // Restrict to specific extensions
+    );
+    if (result != null) {
+      PlatformFile file = result.files.first;
+      setState(() {
+        audioFilePath = file.path;
+      });
+    }
+  }
+
+  String? filePath;
+  void pickDocument() async {
+    // Use FilePicker to let user pick a file
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf', 'doc', 'docx', 'txt'],
+      // allowedExtensions: ['pdf', 'doc', 'docx', 'txt'],
+    );
+
+    if (result != null) {
+      PlatformFile file = result.files.first;
+      setState(() {
+        filePath = file.path; // Get file path
+      });
+    } else {
+      // User canceled the picker
+      print("No file selected");
+    }
+  }
+
+  Contact? selectedContact;
+
+  // Function to pick a contact
+  Future<void> pickContact() async {
+    // Check and request permission
+    if (await Permission.contacts.isDenied) await Permission.contacts.request();
+    if (await Permission.contacts.request().isGranted) {
+      // Fetch the contacts and let user pick one
+      Iterable<Contact> contacts = await ContactsService.getContacts();
+      Contact? contact = await showDialog<Contact>(
+        context: context,
+        builder: (context) => SimpleDialog(
+          title: Text('Select a Contact'),
+          children: contacts
+              .map(
+                (contact) => SimpleDialogOption(
+                  onPressed: () => Navigator.pop(context, contact),
+                  child: Text(contact.displayName ?? 'No Name'),
+                ),
+              )
+              .toList(),
+        ),
+      );
+
+      if (contact != null) {
+        setState(() {
+          selectedContact = contact;
+        });
+      }
+    } else {
+      // Permission denied
+      print("Contacts permission denied");
+    }
+  }
+
+  GoogleMapController? mapController;
+  LatLng _currentPosition =
+      LatLng(37.7749, -122.4194); // Default location: San Francisco
+  LatLng? _selectedLocation;
+
+  // Function to get the user's current location
+  Future<void> _getUserLocation() async {
+    var status = await Permission.location.request();
+    if (status.isDenied) await Geolocator.requestPermission();
+
+    if (status.isGranted) {
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      setState(() {
+        _currentPosition = LatLng(position.latitude, position.longitude);
+      });
+      mapController?.animateCamera(CameraUpdate.newLatLng(_currentPosition));
+    } else {
+      print("Location permission denied");
+    }
+  }
+
+  // Function to handle map tap (picking location)
+  void _onMapTapped(LatLng position) {
+    setState(() {
+      _selectedLocation = position;
+    });
+  }
+
   @override
   void initState() {
+    _getUserLocation();
     _soundRecorder = FlutterSoundRecorder();
     _openAudioRecording();
     BlocProvider.of<GetSingleUserCubit>(context)
@@ -196,7 +320,7 @@ class _SingleChatPageState extends State<SingleChatPage> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              context.pop();
             },
             icon: const Icon(Icons.arrow_back_ios),
           ),
@@ -206,11 +330,11 @@ class _SingleChatPageState extends State<SingleChatPage> {
           ),
           actions: [
             AppBarSingleChatActions(message: widget.message),
-            const SizedBox(width: 25),
+            SizedBox(width: 25.w),
             const Icon(Icons.call, size: 22),
-            const SizedBox(width: 25),
+            SizedBox(width: 25.w),
             const Icon(Icons.more_vert, size: 22),
-            const SizedBox(width: 15),
+            SizedBox(width: 15.w),
           ],
         ),
         body: BlocBuilder<MessageCubit, MessageState>(
@@ -239,8 +363,8 @@ class _SingleChatPageState extends State<SingleChatPage> {
                           recipientProfile: widget.message.recipientProfile,
                         ),
                         _isReplying == true
-                            ? const SizedBox(height: 5)
-                            : const SizedBox(height: 0),
+                            ? SizedBox(height: 5.h)
+                            : SizedBox(height: 0),
                         _isReplying == true
                             ? Row(
                                 children: [
@@ -253,7 +377,7 @@ class _SingleChatPageState extends State<SingleChatPage> {
                                       },
                                     ),
                                   ),
-                                  Container(width: 60),
+                                  Container(width: 60.w),
                                 ],
                               )
                             : Container(),
@@ -279,7 +403,7 @@ class _SingleChatPageState extends State<SingleChatPage> {
                                             widget.message.recipientName,
                                         file: _image, onTap: () {
                                       _sendImageMessage();
-                                      Navigator.pop(context);
+                                      context.pop();
                                     });
                                   },
                                 );
@@ -335,6 +459,50 @@ class _SingleChatPageState extends State<SingleChatPage> {
                     ),
                     _isShowAttachWindow == true
                         ? MyPosition(
+                            getImageFromCamera: () {},
+                            getLocation: () async{
+                              showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return Dialog(
+                                      child: Container(
+                                        //height: 200.h,
+                                        child: GoogleMap(
+                                          initialCameraPosition: CameraPosition(
+                                            target: _currentPosition,
+                                            zoom: 15.0,
+                                          ),
+                                          onMapCreated: (controller) {
+                                            mapController = controller;
+                                          },
+                                          onTap: _onMapTapped,
+                                          markers: _selectedLocation != null
+                                              ? {
+                                                  Marker(
+                                                    markerId: MarkerId(
+                                                        'selected-location'),
+                                                    position:
+                                                        _selectedLocation!,
+                                                  ),
+                                                }
+                                              : {},
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            },
+                            getContact: () async {
+                              await pickContact();
+                            },
+                            getAudio: () async {
+                              pickAudio();
+                            },
+                            getDoc: () async {
+                              pickDocument();
+                            },
+                            getImageFromGallery: () async {
+                              getImageForGallery();
+                            },
                             sendGifMessage: () {
                               _sendGifMessage();
                             },
@@ -348,7 +516,7 @@ class _SingleChatPageState extends State<SingleChatPage> {
                                               widget.message.recipientName,
                                           file: _video, onTap: () {
                                         _sendVideoMessage();
-                                        Navigator.pop(context);
+                                        context.pop();
                                       });
                                     },
                                   );
@@ -365,9 +533,7 @@ class _SingleChatPageState extends State<SingleChatPage> {
               );
             }
             return const Center(
-              child: CircularProgressIndicator(
-                color: tabColor,
-              ),
+              child: CircularProgressIndicator(color: tabColor),
             );
           },
         ),

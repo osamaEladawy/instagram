@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/const/page_const.dart';
+import '../../../../core/routes/page_const.dart';
 import '../../../calls/domain/entities/call_entity.dart';
 import '../../../calls/domain/use_cases/get_call_channel_id_usecase.dart';
 import '../../../calls/presentation/manager/call/call_cubit.dart';

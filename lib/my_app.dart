@@ -25,6 +25,7 @@ import 'package:inistagram/features/status/presentation/manager/status/status_cu
 import 'package:inistagram/features/user/presentation/manager/auth/auth_cubit.dart';
 import 'package:inistagram/features/user/presentation/manager/get_single_user/get_single_user_cubit.dart';
 import 'package:inistagram/features/user/presentation/manager/user/user_cubit.dart';
+import 'package:inistagram/features/user/presentation/pages/initialpage.dart';
 import 'package:provider/provider.dart';
 import 'features/chat/presentation/manager/chat/chat_cubit.dart';
 import 'features/user/presentation/manager/cerdential/credential_cubit.dart';
@@ -85,12 +86,13 @@ class MyApp extends StatelessWidget {
                 ),
                 scaffoldBackgroundColor: Colors.black),
             themeMode: ThemeMode.system,
-            initialRoute: "/",
+            //initialRoute: "/",
             onGenerateRoute: OnGenerateRoute.route,
+            home: child,
           ),
         );
       },
-      // child:
+      child: InitialPage(),
     );
   }
 }

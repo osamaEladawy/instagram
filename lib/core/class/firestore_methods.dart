@@ -772,7 +772,7 @@ class FireStoreMethods {
     final bytes = response.bodyBytes;
     final temp = (await getTemporaryDirectory());
     final path = "${temp.path}/image.jpg";
-    File(path).writeAsBytesSync(bytes);
+    final res = File(path).writeAsBytesSync(bytes);
     // await Share.shareXFiles(
     //   [path],
     //   text: "Hello users",
@@ -780,8 +780,8 @@ class FireStoreMethods {
   }
 
   Future<void> shareImageUrl(String postUrl) async {
-    const url = "https://www.youtube.com/shorts/6NGosFgx45Y";
-    await Share.share(url);
+    // const url = "https://www.youtube.com/shorts/6NGosFgx45Y";
+    await Share.share(postUrl);
   }
 
   Future<void> shareImageFromGalleryOrCamera() async {

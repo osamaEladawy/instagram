@@ -9,7 +9,7 @@ import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/features/user/presentation/widgets/auth/dialog.dart';
 import 'package:provider/provider.dart';
 import '../../../core/class/handel_request.dart';
-import '../../../core/const/page_const.dart';
+import '../../../core/routes/page_const.dart';
 import '../../../core/class/notification.dart';
 import '../../../core/functions/navigationpage.dart';
 import '../../../core/class/share_data.dart';

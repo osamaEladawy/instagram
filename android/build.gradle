@@ -1,16 +1,16 @@
-buildscript {
-    ext.kotlin_version = '1.9.23' // Change here
-    repositories {
-        google()
-        mavenCentral()
-    }
+// buildscript {
+//     ext.kotlin_version = '2.1.0' // Change here
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//        classpath '-Xskip-metadata-version-check'
-    }
-}
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:4.1.3'
+//         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+// //        classpath '-Xskip-metadata-version-check'
+//     }
+// }
 
 
 allprojects {

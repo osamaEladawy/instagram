@@ -8,7 +8,7 @@ import 'package:inistagram/features/user/presentation/manager/get_single_user/ge
 import 'package:inistagram/features/user/presentation/widgets/profile/appbartitle.dart';
 import 'package:inistagram/features/user/presentation/widgets/profile/detialesForUsers.dart';
 import 'package:inistagram/features/user/presentation/widgets/profile/tabsofposts.dart';
-import 'package:inistagram/core/const/page_const.dart';
+import 'package:inistagram/core/routes/page_const.dart';
 import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:provider/provider.dart';
 

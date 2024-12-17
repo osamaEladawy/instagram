@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inistagram/core/const/colors.dart';
-
 
 class ChecksAndConditions extends StatefulWidget {
   //conditions
@@ -10,9 +10,9 @@ class ChecksAndConditions extends StatefulWidget {
 
   final FocusNode focusNode;
 
- final bool isShowAttachWindow;
+  final bool isShowAttachWindow;
 
- final bool isShowEmojiKeyboard;
+  final bool isShowEmojiKeyboard;
 
   final bool isRecording;
 
@@ -24,8 +24,7 @@ class ChecksAndConditions extends StatefulWidget {
   final void Function()? showAttackAndEmoji;
   final void Function()? changeStateAttackWindow;
 
-
- final bool isDisplaySendButton;
+  final bool isDisplaySendButton;
 
   ChecksAndConditions(
       {super.key,
@@ -39,7 +38,8 @@ class ChecksAndConditions extends StatefulWidget {
       required this.sendTextMessage,
       required this.selectImage,
       required this.isRecording,
-      required this.onChanged,required this.showAttackAndEmoji,
+      required this.onChanged,
+      required this.showAttackAndEmoji,
       required this.changeStateAttackWindow});
 
   @override
@@ -51,32 +51,33 @@ class _ChecksAndConditionsState extends State<ChecksAndConditions> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-          left: 10,
-          right: 10,
-          top: widget.isReplying == true ? 0 : 5,
-          bottom: 5),
+        left: 10.w,
+        right: 10.w,
+        top: widget.isReplying == true ? 0 : 5.h,
+        bottom: 5.h,
+      ),
       child: Row(
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
               decoration: BoxDecoration(
                   color: appBarColor,
                   borderRadius: widget.isReplying == true
-                      ? const BorderRadius.only(
-                          bottomLeft: Radius.circular(25),
-                          bottomRight: Radius.circular(25))
-                      : BorderRadius.circular(25)),
-              height: 50,
+                      ? BorderRadius.only(
+                          bottomLeft: Radius.circular(25.r),
+                          bottomRight: Radius.circular(25.r))
+                      : BorderRadius.circular(25.r)),
+              height: 50.h,
               child: TextField(
                 focusNode: widget.focusNode,
-                onTap: widget.showAttackAndEmoji,//showAttackAndEmoje
+                onTap: widget.showAttackAndEmoji, //showAttackAndEmoje
                 controller: widget.textMessageController,
-                onChanged: widget.onChanged,//onChanged
+                onChanged: widget.onChanged, //onChanged
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                  contentPadding: EdgeInsets.symmetric(vertical: 15.h),
                   prefixIcon: GestureDetector(
-                    onTap: widget.toggleEmojiKeyboard,//toggleEmojiKeyboard
+                    onTap: widget.toggleEmojiKeyboard, //toggleEmojiKeyboard
                     child: Icon(
                         widget.isShowEmojiKeyboard == false
                             ? Icons.emoji_emotions
@@ -84,7 +85,7 @@ class _ChecksAndConditionsState extends State<ChecksAndConditions> {
                         color: greyColor),
                   ),
                   suffixIcon: Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
+                    padding: EdgeInsets.only(top: 12.0.h),
                     child: Wrap(
                       children: [
                         Transform.rotate(
@@ -97,42 +98,40 @@ class _ChecksAndConditionsState extends State<ChecksAndConditions> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 15,
-                        ),
+                        SizedBox(width: 15.w),
                         GestureDetector(
-                          onTap:widget.selectImage,
+                          onTap: widget.selectImage,
                           child: const Icon(
                             Icons.camera_alt,
                             color: greyColor,
                           ),
                         ),
-                        const SizedBox(
-                          width: 15,
-                        ),
+                        SizedBox(width: 15.w),
                         GestureDetector(
                           onTap: widget.sendTextMessage,
                           child: Container(
                             //padding: EdgeInsets.only(bottom: 2),
                             //alignment: Alignment.center,
-                            width: 30,
-                            height: 30,
+                            width: 30.w,
+                            height: 30.h,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),),
+                              borderRadius: BorderRadius.circular(20.r),
+                            ),
                             child: Center(
                               child: Icon(
                                 widget.isDisplaySendButton ||
-                                    widget.textMessageController.text.isNotEmpty
+                                        widget.textMessageController.text
+                                            .isNotEmpty
                                     ? Icons.send_outlined
                                     : widget.isRecording
-                                    ? Icons.close
-                                    : Icons.mic,
+                                        ? Icons.close
+                                        : Icons.mic,
                                 color: Colors.grey,
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: 10.0),
+                        SizedBox(width: 10.0.w),
                       ],
                     ),
                   ),
@@ -142,7 +141,6 @@ class _ChecksAndConditionsState extends State<ChecksAndConditions> {
               ),
             ),
           ),
-
         ],
       ),
     );

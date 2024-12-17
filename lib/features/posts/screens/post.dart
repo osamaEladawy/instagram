@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:inistagram/core/class/handel_request.dart';
-import 'package:inistagram/core/const/page_const.dart';
+import 'package:inistagram/core/routes/page_const.dart';
 import 'package:inistagram/core/class/firestore_methods.dart';
 import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/view_model/post/post_view_model.dart';

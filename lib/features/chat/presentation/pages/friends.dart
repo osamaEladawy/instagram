@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inistagram/core/const/colors.dart';
 
-import '../../../../core/const/page_const.dart';
+import '../../../../core/routes/page_const.dart';
 import '../../../../shared/widgets/profile_widget.dart';
 import '../../../user/presentation/manager/get_single_user/get_single_user_cubit.dart';
 import '../../../user/presentation/manager/user/user_cubit.dart';

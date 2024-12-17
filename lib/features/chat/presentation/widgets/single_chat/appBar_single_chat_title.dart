@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inistagram/core/const/colors.dart';
 import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:jiffy/jiffy.dart';
@@ -22,17 +23,17 @@ class AppBarSingleChatTitle extends StatelessWidget {
             builder: (context, state) {
           if (state is GetSingleUserLoaded) {
             return state.userEntity.uid == user?.uid && user?.isOnline == true
-                ? const Text(
+                ? Text(
                     "Online",
                     style: TextStyle(
-                        fontSize: 11,
+                        fontSize: 11.sp,
                         fontWeight: FontWeight.w400,
                         color: greyColor),
                   )
                 : Text(
                     "last seen ${Jiffy.parse("${state.userEntity.dateWhenLogOut.toDate()}").fromNow()}",
-                    style: const TextStyle(
-                      fontSize: 15,
+                    style: TextStyle(
+                      fontSize: 15.sp,
                       color: greyColor,
                     ),
                   );

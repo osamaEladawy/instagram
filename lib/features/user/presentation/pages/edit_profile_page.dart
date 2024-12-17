@@ -12,7 +12,7 @@ import 'package:inistagram/features/user/presentation/widgets/editprofile.dart/p
 import 'package:inistagram/features/user/presentation/widgets/editprofile.dart/savedateforuser.dart';
 import 'package:inistagram/features/user/presentation/widgets/editprofile.dart/settingitemwidget.dart';
 import 'package:inistagram/core/const/app_const.dart';
-import 'package:inistagram/core/const/page_const.dart';
+import 'package:inistagram/core/routes/page_const.dart';
 import 'package:inistagram/core/functions/navigationpage.dart';
 import 'package:inistagram/shared/widgets/stackforimageuser.dart';
 import 'package:inistagram/core/providers/storage_provider.dart';

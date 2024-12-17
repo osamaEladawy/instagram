@@ -6,7 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:inistagram/core/class/firestore_methods.dart';
 import 'package:inistagram/core/class/handle_image.dart';
-import 'package:inistagram/core/const/page_const.dart';
+import 'package:inistagram/core/routes/page_const.dart';
 import 'package:inistagram/core/functions/navigationpage.dart';
 import 'package:inistagram/core/functions/snackbar.dart';
 import 'package:path/path.dart' as Path;

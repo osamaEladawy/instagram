@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inistagram/features/chat/domain/entities/message_entity.dart';
 import 'package:inistagram/features/user/domain/entities/user_entity.dart';
-import 'package:inistagram/core/const/page_const.dart';
+import 'package:inistagram/core/routes/page_const.dart';
 import 'package:inistagram/core/class/firestore_methods.dart';
 import 'package:inistagram/core/functions/navigationpage.dart';
 import 'package:inistagram/features/user/presentation/manager/auth/auth_cubit.dart';

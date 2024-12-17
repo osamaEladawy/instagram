@@ -78,6 +78,10 @@ dependencies:
   easy_localization:
   flutter_screenutil: ^5.9.3
   google_sign_in:
+  google_maps_flutter: ^2.5.0
+  geolocator: ^11.0.0
+  contacts_service: ^0.6.3
+  permission_handler: ^11.0.1
 
 dev_dependencies:
   flutter_test:

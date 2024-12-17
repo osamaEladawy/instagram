@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:inistagram/core/class/responsive_screen.dart';
 import 'package:inistagram/core/const/colors.dart';
-
 
 class MyPosition extends StatefulWidget {
   final void Function()? selectVideo;
-  final void Function()? sendGifMessage; 
+  final void Function()? sendGifMessage;
   final void Function()? getImageFromGallery;
   final void Function()? getImageFromCamera;
+  final void Function()? getDoc;
+  final void Function()? getAudio;
+  final void Function()? getVideo;
+  final void Function()? getContact;
+  final void Function()? getLocation;
 
-  const MyPosition({super.key, this.selectVideo, this.sendGifMessage, this.getImageFromGallery, this.getImageFromCamera});
+  const MyPosition({
+    super.key,
+    this.selectVideo,
+    this.sendGifMessage,
+    this.getImageFromGallery,
+    this.getImageFromCamera,
+    this.getDoc,
+    this.getAudio,
+    this.getVideo,
+    this.getContact,
+    this.getLocation,
+  });
   @override
   State<MyPosition> createState() => _MyPositionState();
 }
@@ -16,19 +33,20 @@ class MyPosition extends StatefulWidget {
 class _MyPositionState extends State<MyPosition> {
   @override
   Widget build(BuildContext context) {
+    ResponsiveScreen.initialize(context);
     return Positioned(
-      bottom: 62,
-      top: 400,
-      left: 15,
-      right: 15,
+      bottom: 60.h,
+      //top: ResponsiveScreen.height * 0.30,
+      left: 15.w,
+      right: 15.w,
       child: Container(
         width: double.infinity,
-        height:55,
+        //height: 55.h,
         //MediaQuery.of(context).size.width * 0.18,
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
         decoration: BoxDecoration(
           color: bottomAttachContainerColor,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Column(
           children: [
@@ -36,6 +54,7 @@ class _MyPositionState extends State<MyPosition> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _attachWindowItem(
+                  onTap: widget.getDoc,
                   icon: Icons.document_scanner,
                   color: Colors.deepPurpleAccent,
                   title: "Document",
@@ -46,35 +65,34 @@ class _MyPositionState extends State<MyPosition> {
                     title: "Camera",
                     onTap: widget.getImageFromCamera),
                 _attachWindowItem(
-                  onTap: widget.getImageFromGallery,
+                    onTap: widget.getImageFromGallery,
                     icon: Icons.image,
                     color: Colors.purpleAccent,
                     title: "Gallery"),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _attachWindowItem(
+                    onTap: widget.getAudio,
                     icon: Icons.headphones,
                     color: Colors.deepOrange,
                     title: "Audio"),
                 _attachWindowItem(
+                    onTap: widget.getLocation,
                     icon: Icons.location_on,
                     color: Colors.green,
                     title: "Location"),
                 _attachWindowItem(
+                    onTap: widget.getContact,
                     icon: Icons.account_circle,
                     color: Colors.deepPurpleAccent,
                     title: "Contact"),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -92,8 +110,7 @@ class _MyPositionState extends State<MyPosition> {
                   icon: Icons.videocam_rounded,
                   color: Colors.lightGreen,
                   title: "Video",
-                  onTap:widget.selectVideo
-                  ,
+                  onTap: widget.selectVideo,
                 ),
               ],
             )
@@ -112,27 +129,21 @@ class _MyPositionState extends State<MyPosition> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: 55,
-              height: 55,
-              padding: const EdgeInsets.all(10),
+              width: 55.w,
+              height: 55.h,
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40), color: color),
+                  borderRadius: BorderRadius.circular(40.r), color: color),
               child: Icon(icon),
             ),
-            const SizedBox(
-              height: 5,
-            ),
+            SizedBox(height: 5.h),
             Text(
               "$title",
-              style: const TextStyle(color: greyColor, fontSize: 13),
+              style: TextStyle(color: greyColor, fontSize: 13.sp),
             ),
           ],
         ),
       ),
     );
   }
-
-
-
-
 }

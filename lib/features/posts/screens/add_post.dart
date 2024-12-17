@@ -11,7 +11,7 @@ import 'package:inistagram/features/status/domain/entities/status_image_entity.d
 import 'package:inistagram/features/status/domain/use_cases/get_my_status_future_usecase.dart';
 import 'package:inistagram/features/status/presentation/manager/status/status_cubit.dart';
 import 'package:inistagram/features/user/domain/entities/user_entity.dart';
-import 'package:inistagram/core/const/page_const.dart';
+import 'package:inistagram/core/routes/page_const.dart';
 import 'package:inistagram/shared/sigle_chate/show_image_and_video.dart';
 import 'package:inistagram/core/providers/user_providers.dart';
 import 'package:inistagram/core/providers/storage_provider.dart';

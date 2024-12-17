@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inistagram/core/class/responsive_screen.dart';
-import 'package:inistagram/core/const/page_const.dart';
+import 'package:inistagram/core/routes/page_const.dart';
 import 'package:inistagram/core/functions/extinctions.dart';
 import 'package:inistagram/core/functions/profile_widget.dart';
 import 'package:inistagram/core/functions/snackbar.dart';

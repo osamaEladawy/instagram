@@ -51,21 +51,23 @@ class CommentsCubit extends Cubit<CommentsState> {
     required String usernameComment,
     required BuildContext context,
   }) async {
-    await FireStoreMethods()
-        .deleteComment(
-            postId: postId,
-            commentId: commentId,
-            commentUserId: commentUserId,
-            postUserId: postUserId)
-        .then((value) {
-      if (FirebaseAuth.instance.currentUser!.uid == commentUserId) {
-        //showSnackBar("you deleted This post", context);
-        Navigator.of(context).maybePop();
-      } else {
-        showSnackBar("$usernameComment deleted This post");
-        Navigator.of(context).maybePop();
-      }
-    });
+    try {
+      await FireStoreMethods()
+          .deleteComment(
+              postId: postId,
+              commentId: commentId,
+              commentUserId: commentUserId,
+              postUserId: postUserId)
+          .then((value) {
+        if (FirebaseAuth.instance.currentUser!.uid == commentUserId) {
+          //showSnackBar("you deleted This post", context);
+          Navigator.of(context).maybePop();
+        } else {
+          showSnackBar("$usernameComment deleted This post");
+          Navigator.of(context).maybePop();
+        }
+      });
+    } catch (e) {}
   }
 
   addComment({
@@ -77,21 +79,23 @@ class CommentsCubit extends Cubit<CommentsState> {
     required String profilePic,
     required String username,
   }) async {
-    if (comment.text.isNotEmpty) {
-      await FireStoreMethods().postComment(
-        postUserId: postUserId,
-        postUrl: postUrl,
-        postId: postId,
-        profilePic: profilePic,
-        text: comment.text,
-        useruid: useruid,
-        username: username,
-        context: context,
-      );
-      comment.clear();
-    } else {
-      showSnackBar("Please Enter the comment");
-    }
+    try {
+      if (comment.text.isNotEmpty) {
+        await FireStoreMethods().postComment(
+          postUserId: postUserId,
+          postUrl: postUrl,
+          postId: postId,
+          profilePic: profilePic,
+          text: comment.text,
+          useruid: useruid,
+          username: username,
+          context: context,
+        );
+        comment.clear();
+      } else {
+        showSnackBar("Please Enter the comment");
+      }
+    } catch (e) {}
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getAllComments(String postId) =>

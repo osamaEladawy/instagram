@@ -30,13 +30,13 @@ class CommentPage extends StatefulWidget {
 }
 
 class _CommentPageState extends State<CommentPage> {
-  // @override
-  // void dispose() {
-  //   if (mounted) {
-  //     CommentsCubit.instance.comment.dispose();
-  //   }
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    if (mounted) {
+      CommentsCubit.instance.comment.dispose();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,6 @@ class _CommentPageState extends State<CommentPage> {
                               context: context,
                               postUrl: "${widget.postModel['postUrl']}",
                               postUserId: "${widget.postModel['uid']}");
-                          CommentsCubit.instance.comment.dispose();
                         },
                         child: const Text(
                           "Post",

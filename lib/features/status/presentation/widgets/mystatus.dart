@@ -3,7 +3,7 @@ import 'package:inistagram/core/const/colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/class/handle_image.dart';
-import '../../../../core/const/page_const.dart';
+import '../../../../core/routes/page_const.dart';
 import '../../../../core/functions/navigationpage.dart';
 
 class MyStatusOfRow extends StatelessWidget {

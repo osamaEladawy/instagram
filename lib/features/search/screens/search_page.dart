@@ -8,7 +8,7 @@ import 'package:inistagram/shared/model/post_model.dart';
 import 'package:inistagram/features/search/cubit/search_cubit.dart';
 
 import '../../user/data/remote/models/user_model.dart';
-import '../../../core/const/page_const.dart';
+import '../../../core/routes/page_const.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

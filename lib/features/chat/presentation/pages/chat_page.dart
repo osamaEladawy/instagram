@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inistagram/core/const/colors.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../core/const/page_const.dart';
+import '../../../../core/routes/page_const.dart';
 import '../../../../core/functions/navigationpage.dart';
 import '../../../../shared/widgets/profile_widget.dart';
 import '../../domain/entities/chat_entity.dart';

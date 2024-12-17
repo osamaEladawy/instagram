@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inistagram/core/const/colors.dart';
 import 'package:intl/intl.dart';
 import 'package:swipe_to/swipe_to.dart';
@@ -169,7 +170,7 @@ class _ListOfMessagesState extends State<ListOfMessages> {
     required MainAxisAlignment mainAxisAlignment,
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+      padding: EdgeInsets.symmetric(horizontal: 5.0.w),
       child: SwipeTo(
         onRightSwipe: onSwipe,
         child: GestureDetector(
@@ -184,18 +185,18 @@ class _ListOfMessagesState extends State<ListOfMessages> {
                   CircleAvatar(
                     backgroundImage: NetworkImage("${widget.recipientProfile}"),
                   ),
-                const SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 10),
+                      margin: EdgeInsets.only(top: 10.h),
                       padding: EdgeInsets.only(
                           left: 5,
                           right: messageType == MessageTypeConst.textMessage
                               ? rightPadding!
-                              : 5,
-                          top: 5,
+                              : 5.w,
+                          top: 5.h,
                           bottom: 5),
                       constraints: BoxConstraints(
                           maxWidth: MediaQuery.of(context).size.width * 0.80),
@@ -210,17 +211,17 @@ class _ListOfMessagesState extends State<ListOfMessages> {
                               : Container(
                                   height: reply!.messageType ==
                                           MessageTypeConst.textMessage
-                                      ? 70
-                                      : 80,
+                                      ? 70.h
+                                      : 80.h,
                                   decoration: BoxDecoration(
                                     color: Colors.black.withOpacity(0.2),
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(8.r),
                                   ),
                                   child: Row(
                                     children: [
                                       Container(
                                         height: double.infinity,
-                                        width: 4.5,
+                                        width: 4.5.w,
                                         decoration: BoxDecoration(
                                           color: reply.username ==
                                                   widget.messageEntity
@@ -235,8 +236,8 @@ class _ListOfMessagesState extends State<ListOfMessages> {
                                       ),
                                       Expanded(
                                         child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 5.0, vertical: 5),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 5.0.w, vertical: 5.h),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -263,7 +264,7 @@ class _ListOfMessagesState extends State<ListOfMessages> {
                                     ],
                                   ),
                                 ),
-                          const SizedBox(height: 3),
+                          SizedBox(height: 3.h),
                           MessageTypeWidget(
                             message: message,
                             type: messageType,
@@ -274,7 +275,7 @@ class _ListOfMessagesState extends State<ListOfMessages> {
                               Text(DateFormat.jm().format(createAt!.toDate()),
                                   style: const TextStyle(
                                       fontSize: 12, color: whiteColor)),
-                              const SizedBox(width: 10),
+                              SizedBox(width: 10.w),
                               isShowTick == true
                                   ? Icon(
                                       isSeen == true
@@ -291,7 +292,7 @@ class _ListOfMessagesState extends State<ListOfMessages> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 3),
+                    SizedBox(height: 3.h),
                     Align(
                       alignment: Alignment.centerRight,
                       child: isShowTick == true
